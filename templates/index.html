@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sutom Solver</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/materialize.min.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+
+</head>
+
+<body>
+<!--NAVIGATION BAR-->
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo">Sutom Solver</a>
+        <!--<ul class="right hide-on-med-and-down">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+        </ul>-->
+        <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<!--CONTAINER-->
+<div class="container">
+    <h4 class="header center red-text">Bloqué dans ton Sutom du jour ? On est là pour t'aider !</h4>
+    <!--<h4 class="center light-blue-text">Hey</h4>-->
+
+    <form action="/" method = "POST" >
+        <h4>Mot courant</h4>
+        <p>Indique ici tes lettres rouges et remplace les lettres non reconnues par un point</p>
+        <input type = "text" name = "attempt" value="{{ request.form['attempt'] }}"/></p>
+        <h4>Lettres jaunes</h4>
+        <p>Indique ici tes lettres jaunes dans n'importe quel ordre</p>
+        <input type = "text" name = "yellow" value="{{ request.form['yellow'] }}"/></p>
+        <p><input type = "submit" value = "Submit" name="btn_submit"/></p>
+
+{% if candidates%}
+    <h5>Here are the possibilities:</h5>
+
+    <ul class="collection with-header">
+        {% for candidate in candidates %}
+            <li class="collection-item">{{ candidate }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!--FOOTER-->
+<footer class="page-footer blue">
+    <div class="container">
+        <div class="row">
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="https://github.com/devironl/sutom-solver">Github code</a></li>
+                    <li><a class="white-text" href="https://www.twitter.com/devironl">Twitter</a></li>
+                    <li><a class="white-text" href="https://www.linkedin.com/in/devironl">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
