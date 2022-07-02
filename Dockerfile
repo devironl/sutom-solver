@@ -1,10 +1,14 @@
-FROM python:latest
+#FROM python:3
+FROM --platform=linux/amd64 python:3
+
 
 WORKDIR /sutom-solver
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements.txt /sutom-solver/
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python3", "app.py"]
+CMD [ "python", "app.py"]
+
+#EXPOSE 5000
