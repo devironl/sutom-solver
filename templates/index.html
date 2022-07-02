@@ -13,7 +13,7 @@
 
 <body>
 <!--NAVIGATION BAR-->
-<nav class="light-blue lighten-1" role="navigation">
+<nav class="blue-grey lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo">Sutom Solver</a>
         <!--<ul class="right hide-on-med-and-down">
             <li><a href="">Home</a></li>
@@ -23,22 +23,23 @@
     </div>
 </nav>
 
-<!--CONTAINER-->
 <div class="container">
-    <h4 class="header center red-text">Bloqué dans ton Sutom du jour ? On est là pour t'aider !</h4>
-    <!--<h4 class="center light-blue-text">Hey</h4>-->
+    <h4 class="header center blue-grey-text">Bloqué dans ton Sutom du jour ?</br></h4>
 
-    <form action="/" method = "POST" >
-        <h4>Mot courant</h4>
-        <p>Indique ici tes lettres rouges et remplace les lettres non reconnues par un point</p>
-        <input type = "text" name = "attempt" value="{{ request.form['attempt'] }}"/></p>
-        <h4>Lettres jaunes</h4>
-        <p>Indique ici tes lettres jaunes dans n'importe quel ordre</p>
-        <input type = "text" name = "yellow" value="{{ request.form['yellow'] }}"/></p>
-        <p><input type = "submit" value = "Submit" name="btn_submit"/></p>
+    <form action="/" method="POST" >
+        <!--<h5>Mot courant</h5>-->
+        <p>Indique ici les lettres <b class="red-text">déjà validées</b> et remplace les lettres non reconnues par un point</p>
+        <input type="text" name="attempt" class="red-text" value="{{ request.form['attempt'] }}"/></p>
+        <!--<h5>Lettres jaunes</h5>-->
+        <p>Indique ici les lettres <b class="orange-text">correctes mais mal placées</b></p>
+        <input type="text" class="orange-text" name="yellow" value="{{ request.form['yellow'] }}"/></p>
+        <!--<h5>Lettres refusées</h5>-->
+        <p>Indique ici les lettres <b class="blue-grey-text">refusées</b></p>
+        <input type="text" name="grey" class="blue-grey-text" value="{{ request.form['grey'] }}"/></p>
+        <p><input type="submit" value="Envoyer" name="btn_submit"/></p> 
 
 {% if candidates%}
-    <h5>Here are the possibilities:</h5>
+    <h5>Voici les mots possibles:</h5>
 
     <ul class="collection with-header">
         {% for candidate in candidates %}
@@ -55,11 +56,11 @@
 <br>
 
 <!--FOOTER-->
-<footer class="page-footer blue">
+<footer class="page-footer blue-grey">
     <div class="container">
         <div class="row">
             <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
+                <h5 class="white-text"> </h5>
                 <ul>
                     <li><a class="white-text" href="https://github.com/devironl/sutom-solver">Github code</a></li>
                     <li><a class="white-text" href="https://www.twitter.com/devironl">Twitter</a></li>
