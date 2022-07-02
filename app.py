@@ -22,7 +22,8 @@ def grey_in_word(grey_letters, word):
     return False
 
 def lookup(attempt, yellow_letters, grey_letters):
-    regex = re.compile(f"^{attempt.upper().strip()}$")
+    attempt = re.sub("[^A-Z\.]", "", unidecode(attempt.upper().strip()))
+    regex = re.compile(f"^{attempt}$")
     for word in dico:
         if regex.search(word) and all_yellow_in_word(yellow_letters, word) and not grey_in_word(grey_letters, word):
             yield word
